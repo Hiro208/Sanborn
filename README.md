@@ -40,9 +40,9 @@ The full planned model is a legend-guided architecture with four core modules:
 
 Cross-attention equation:
 
-```text
-F_attn = softmax((Q K^T) / sqrt(d_k)) V
-```
+$$
+F_{attn} = \text{Softmax}\left(\frac{QK^T}{\sqrt{d_k}}\right)V
+$$
 
 Where `Q` comes from map features, `K/V` come from legend features, and `d_k` is key dimension.
 
