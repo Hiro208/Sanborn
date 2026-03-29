@@ -29,15 +29,22 @@ The repository currently implements the front stages of the pipeline:
 
 ---
 
-##  Planned Full Method
+## Planned Full Method
 
 The full planned model is a legend-guided architecture with four core modules:
 
-* **Legend Encoder (Support Branch)**: Inputs legend patches (64×64) for each class (e.g., Brick/Wood) and outputs class embeddings $F_{legend}$.
-* **Map Encoder (Query Branch)**: Inputs map patches (512×512) and outputs dense feature maps $F_{map}$.
-* **Cross-Attention Matching Module**: Uses map features as the query ($Q$) and legend features as the key/value ($K/V$) to compute dynamic matching:
-  $$F_{attn} = \text{Softmax}\left(\frac{QK^T}{\sqrt{d_k}}\right)V$$
-* **Decoder & Skip Fusion**: Fuses the attention features $F_{attn}$ with intermediate map encoder features via skip connections, decoding them into final prediction logits.
+- **Legend Encoder (Support Branch):** Inputs legend patches (`64x64`) for each class (e.g., Brick/Wood) and outputs class embeddings `F_legend`.
+- **Map Encoder (Query Branch):** Inputs map patches (`512x512`) and outputs dense feature maps `F_map`.
+- **Cross-Attention Matching Module:** Uses map features as query (`Q`) and legend features as key/value (`K`, `V`) for dynamic matching.
+- **Decoder & Skip Fusion:** Fuses attention features `F_attn` with intermediate map encoder features via skip connections and decodes final logits.
+
+Cross-attention equation:
+
+```text
+F_attn = softmax((Q K^T) / sqrt(d_k)) V
+```
+
+Where `Q` comes from map features, `K/V` come from legend features, and `d_k` is key dimension.
 
 ---
 
