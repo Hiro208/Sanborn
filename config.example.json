@@ -2,7 +2,6 @@
   "data": {
     "images_dir": "data/Alabama/alabama",
     "labels_dir": "data/labels",
-    "label_dir": "data/labels",
     "output_dir": "output"
   },
   "output": {
